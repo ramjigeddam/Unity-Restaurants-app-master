@@ -1,0 +1,9 @@
+{
+  "updateStatus":"John",
+  "models": 
+  [
+    { 
+    "modelThumbnail":"http://bisoftservices.com/3d/thumbnail.jpg", 
+    "modelsUrl": "http://bisoftservices.com/3d/model.glb" }
+  ]
+ }
