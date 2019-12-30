@@ -12,6 +12,8 @@ public class TrackingHandler : MonoBehaviour, ITrackableEventHandler
     protected TrackableBehaviour.Status m_PreviousStatus;
     protected TrackableBehaviour.Status m_NewStatus;
 
+    public List<GameObject> selectedObject = new List<GameObject>();
+
     #endregion // PROTECTED_MEMBER_VARIABLES
 
     #region UNITY_MONOBEHAVIOUR_METHODS
@@ -81,6 +83,11 @@ public class TrackingHandler : MonoBehaviour, ITrackableEventHandler
 
         // Disable the all augmented Object
 
+        for (int i = 0; i < selectedObject.Count; i++)
+        {
+            selectedObject[i].SetActive(true);
+        }
+
         for (int i = 0; i < augmentedObj.Count; i++)
         {
             augmentedObj[i].SetActive(false);
@@ -122,6 +129,11 @@ public class TrackingHandler : MonoBehaviour, ITrackableEventHandler
         for (int i = 0; i < augmentedObj.Count; i++)
         {
             augmentedObj[i].SetActive(false);
+        }
+
+        for (int i = 0; i < selectedObject.Count; i++)
+        {
+            selectedObject[i].SetActive(false);
         }
 
         /*if (mTrackableBehaviour)

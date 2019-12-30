@@ -23,7 +23,7 @@ public class ScrollViewHandler : MonoBehaviour
     #endregion
 
     #region Public variables
-    public int trackingInt;
+    public int trackingInt = 0;
     #endregion
 
     private void Start()
@@ -90,7 +90,9 @@ public class ScrollViewHandler : MonoBehaviour
                 GameObject.FindObjectOfType<TrackingHandler>().augmentedObj[i].SetActive(false);
             }
 
+            Debug.Log("Min btn distance : " + minBtnDistance);
             GameObject.FindObjectOfType<TrackingHandler>().augmentedObj[minBtnDistance].SetActive(true);
+
             //GameObject.FindObjectOfType<TrackingHandler>().augmentedObj[minBtnDistance].transform.localPosition = Vector3.zero;
             //GameObject.FindObjectOfType<TrackingHandler>().augmentedObj[minBtnDistance].transform.localRotation = Quaternion.Euler(0, 0, 0);
             iTween.ScaleTo(scrollBtns[minBtnDistance].gameObject, iTween.Hash("scale", new Vector3(0.9f, 0.9f, 0.9f), "time", 0.1f, "dealy", 0.05f, "easetype", iTween.EaseType.linear));

@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class SelectItemHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Transform selecteItem, removeItem;
+    public GameObject selectBtn, removeBtn;
+
+    private void Start()
     {
-        
+        selectBtn.SetActive(true);
+        removeBtn.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectedItem()
     {
-        
+        this.transform.parent = selecteItem;
+        selectBtn.SetActive(false);
+        removeBtn.SetActive(true);
+        GameObject.FindObjectOfType<TrackingHandler>().selectedObject.Add(this.gameObject);
+
+    }
+
+    public void RemoveItem()
+    {
+        this.transform.parent = removeItem;
+        GameObject.FindObjectOfType<TrackingHandler>().selectedObject.Remove(this.gameObject);
+        selectBtn.SetActive(true);
+        removeBtn.SetActive(false);
     }
 }
